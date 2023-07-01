@@ -23,4 +23,16 @@ class Users {
 
     return index === -1;
   }
+
+  public getUser(uid): object | false {
+    return this.users.find((x) => x["uid"] === uid) || false;
+  }
+
+  public getUsers(): object[] {
+    return this.users;
+  }
+
+  public getUserCount(): number {
+    return this.users.length;
+  }
 }
