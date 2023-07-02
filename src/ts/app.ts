@@ -1,8 +1,22 @@
 import askInput from "./ReadInput";
-import checkPath from "./PathChecker";
-import readFile from "./FileReader";
+// import checkPath from "./PathChecker";
+// import readFile from "./FileReader";
+import { writeFile, writeFileW, writeFileX } from "./FileWriter";
+import { appendFileA } from "./FileAppender";
 
-askInput("Give me a file or directory path")
+const data =
+  "This is a test.\nThis is is only a test.\nHad this been a real emergency, your computer would be melting in front of you.\n";
+const filePath = "./test-file.txt";
+
+appendFileA(filePath, data, (results) => {
+  if (results.status) {
+    console.log(`Saved`);
+  } else {
+    console.log(results.reason);
+  }
+});
+
+/* askInput("Give me a file or directory path")
   .then((results) => {
     const { userInputData } = results;
 
@@ -24,4 +38,4 @@ askInput("Give me a file or directory path")
   })
   .catch((err) => {
     console.log(err);
-  });
+  }); */
