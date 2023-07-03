@@ -1,8 +1,13 @@
+import test from "ava";
 import * as fileAppender from "../ts/FileAppender";
 
 const data =
   "This is a test.\nThis is is only a test.\nHad this been a real emergency, your computer would be melting in front of you.\n";
 const filePath = "./test-file.txt";
+
+test("foo", (t) => {
+  t.pass();
+});
 
 fileAppender.appendFileA(filePath, data, (results) => {
   if (results.status) {

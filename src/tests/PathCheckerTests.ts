@@ -1,6 +1,11 @@
+import test from "ava";
 import * as checkPath from "../ts/PathChecker";
 
 const filePath = "./test-file.txt";
+
+test("foo", (t) => {
+  t.pass();
+});
 
 checkPath.visibleFile(filePath, (res) => {
   const { status } = res;

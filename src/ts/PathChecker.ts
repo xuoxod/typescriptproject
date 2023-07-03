@@ -1,11 +1,6 @@
-import test from "ava";
 import { stat } from "node:fs";
 import { access, constants } from "node:fs/promises";
 import * as fsConstants from "./Constants";
-
-test("foo", (t) => {
-  t.pass();
-});
 
 export const isDirectory = (path: string = "", cb): void => {
   stat(path, (err, stats) => {
