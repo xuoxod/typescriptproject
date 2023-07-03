@@ -1,4 +1,9 @@
+import test from "ava";
 import fs from "fs";
+
+test("foo", (t) => {
+  t.pass();
+});
 
 export const appendFileA = (
   path: string = "./test.txt",

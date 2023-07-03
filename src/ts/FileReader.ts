@@ -1,5 +1,10 @@
+import test from "ava";
 import fs from "node:fs";
 import { open } from "node:fs/promises";
+
+test("foo", (t) => {
+  t.pass();
+});
 
 export const readFile = (filePath) => {
   return fs.promises

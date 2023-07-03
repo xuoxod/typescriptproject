@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@ava/typescript": "^4.1.0",
     "@tsconfig/node18": "^18.2.0",
-    "@types/node": "^20.3.3"
+    "@types/node": "^20.3.3",
+    "ava": "^5.3.1"
   }
 }
