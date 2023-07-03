@@ -1,41 +1,16 @@
-import askInput from "./ReadInput";
-// import checkPath from "./PathChecker";
-// import readFile from "./FileReader";
-import { writeFile, writeFileW, writeFileX } from "./FileWriter";
-import { appendFileA } from "./FileAppender";
+import { open } from "node:fs/promises";
 
-const data =
-  "This is a test.\nThis is is only a test.\nHad this been a real emergency, your computer would be melting in front of you.\n";
-const filePath = "./test-file.txt";
+async function test(): Promise<void> {
+  let file;
+  try {
+    file = await open("./test-file.txt", "r");
+    const stat = await file.stat();
 
-appendFileA(filePath, data, (results) => {
-  if (results.status) {
-    console.log(`Saved`);
-  } else {
-    console.log(results.reason);
+    console.log(`File Stat: ${JSON.stringify(stat)}`);
+    // use stat
+  } finally {
+    await file.close();
   }
-});
+}
 
-/* askInput("Give me a file or directory path")
-  .then((results) => {
-    const { userInputData } = results;
-
-    if (userInputData) {
-      checkPath(userInputData, (results) => {
-        if (results) {
-          readFile(userInputData)
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          console.log(`Path ${userInputData} is unknown\n`);
-        }
-      });
-    }
-  })
-  .catch((err) => {
-    console.log(err);
-  }); */
+test();
