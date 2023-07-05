@@ -2,10 +2,16 @@ import { strict as assert } from "node:assert";
 import * as pathChecker from "../ts/PathChecker";
 
 const log = console.log.bind(console);
-const filePath = "./path-checker-test-file.txt";
-const invisibleFile = "./file-path-checker-test-file-visible1.txt";
-const visibleFile = "./file-path-checker-test-file-visible2.txt";
-const dirPath = "./path-checker-test-dir";
+const filePath = "./pathchecker-testfile.txt";
+const invisibleFile = "./file-pathchecker-testfile-visible1.txt";
+const visibleFile = "./file-pathchecker-testfile-visible2.txt";
+const readableFile = "./file-pathchecker-testfile-readable1.txt";
+const unreadableFile = "./file-pathchecker-testfile-readable2.txt";
+const writableFile = "./file-pathchecker-testfile-writable1.txt";
+const unwritableFile = "./file-pathchecker-testfile-writable2.txt";
+const executableFile = "./file-pathchecker-testfile-executable1";
+const unexecutableFile = "./file-pathchecker-testfile-executable2";
+const dirPath = "./pathchecker-testdir";
 
 // isDirectory
 describe("PathChecker module", () => {
