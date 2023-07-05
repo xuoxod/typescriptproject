@@ -31,8 +31,12 @@ export const readFileR = (filePath, cb) => {
       cb({ status: true, content });
     });
   } catch (err) {
-    cb({ status: false, error: err });
-    return console.log(err);
+    // cb({ status: false, error: err });
+    const error = new TypeError(`file not found`);
+    error.message = `file not found`;
+
+    throw error;
+    // return console.log(err);
   }
 };
 

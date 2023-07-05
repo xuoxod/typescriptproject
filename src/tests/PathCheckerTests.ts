@@ -1,24 +1,46 @@
-import test from "ava";
-import * as checkPath from "../ts/PathChecker";
+import { strict as assert } from "node:assert";
+import * as pathChecker from "../ts/PathChecker";
 
-const filePath = "./test-file.txt";
+const filePath = "./path-checker-test-file.txt";
+const dirPath = "./path-checker-test-dir";
 
-test("foo", (t) => {
-  t.pass();
+let _status;
+let _isFile;
+
+describe("PathChecker module", () => {
+  let _isDirectory;
+
+  pathChecker.isDirectory(filePath, (res) => {
+    const { isDirectory } = res;
+    _isDirectory = isDirectory;
+  });
+
+  describe("isDirectory method", () => {
+    describe("Returns callback object with isDirectory boolean property", () => {
+      describe("Checking a regular file", () => {
+        it("should equal false", () => {
+          assert.equal(_isDirectory, false);
+        });
+      });
+    });
+  });
 });
 
-checkPath.visibleFile(filePath, (res) => {
-  const { status } = res;
+describe("PathChecker module", () => {
+  let _isDirectory;
 
-  console.log(`\n\n\t\t\tStatus:\t${status}\n\n\n`);
-});
+  pathChecker.isDirectory(dirPath, (res) => {
+    const { isDirectory } = res;
+    _isDirectory = isDirectory;
+  });
 
-checkPath.stats(filePath, (res) => {
-  const { stats } = res;
-
-  if (stats) {
-    console.log(`${JSON.stringify(stats)}`);
-
-    console.log(`${JSON.stringify(stats.mode)}`);
-  }
+  describe("isDirectory method", () => {
+    describe("Returns callback object with isDirectory boolean property", () => {
+      describe("Checking a directory", () => {
+        it("should equal true", () => {
+          assert.equal(_isDirectory, true);
+        });
+      });
+    });
+  });
 });
