@@ -3,10 +3,10 @@ import * as pathChecker from "../ts/PathChecker";
 
 const log = console.log.bind(console);
 const filePath = "./pathchecker-testfile.txt";
-const invisibleFile = "./file-pathchecker-testfile-visible1.txt";
+const invisibleFile = "./.file-pathchecker-testfile-visible1.txt";
 const visibleFile = "./file-pathchecker-testfile-visible2.txt";
-const readableFile = "./file-pathchecker-testfile-readable1.txt";
-const unreadableFile = "./file-pathchecker-testfile-readable2.txt";
+const readableFile = "./file-pathchecker-testfile-readable2.txt";
+const unreadableFile = "./file-pathchecker-testfile-readable1.txt";
 const writableFile = "./file-pathchecker-testfile-writable1.txt";
 const unwritableFile = "./file-pathchecker-testfile-writable2.txt";
 const executableFile = "./file-pathchecker-testfile-executable1";
@@ -122,6 +122,44 @@ describe("PathChecker module", () => {
   describe("visibleFile method", () => {
     describe("Returns callback object with status boolean property", () => {
       describe("Checking an invisible file", () => {
+        it("should equal false", () => {
+          assert.equal(_status, false);
+        });
+      });
+    });
+  });
+});
+
+// readableFile
+describe("PathChecker module", () => {
+  let _status;
+
+  pathChecker.readableFile(readableFile, (res) => {
+    const { status } = res;
+    _status = status;
+  });
+
+  describe("readableFile method", () => {
+    describe("Returns callback object with status boolean property", () => {
+      describe("Checking a readable file", () => {
+        it("should equal true", () => {
+          assert.equal(_status, true);
+        });
+      });
+    });
+  });
+});
+describe("PathChecker module", () => {
+  let _status;
+
+  pathChecker.readableFile(unreadableFile, (res) => {
+    const { status } = res;
+    _status = status;
+  });
+
+  describe("readableFile method", () => {
+    describe("Returns callback object with status boolean property", () => {
+      describe("Checking an unreadable file", () => {
         it("should equal false", () => {
           assert.equal(_status, false);
         });
