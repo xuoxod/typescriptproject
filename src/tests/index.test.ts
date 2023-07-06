@@ -31,3 +31,29 @@ describe("PathChecker module", () => {
     });
   });
 });
+
+describe("PathChecker module", () => {
+  describe("isDirectory method", () => {
+    describe("checking a directory", () => {
+      test("is path a directory", () => {
+        pathChecker.isDirectory(dirPath, (results) => {
+          const { isDirectory } = results;
+          expect(isDirectory).toBeTruthy();
+        });
+      });
+    });
+  });
+});
+
+describe("PathChecker module", () => {
+  describe("isFile method", () => {
+    describe("checking a directory path", () => {
+      test("is path a file", () => {
+        pathChecker.isFile(dirPath, (results) => {
+          const { isFile } = results;
+          expect(isFile).toBeFalsy();
+        });
+      });
+    });
+  });
+});
