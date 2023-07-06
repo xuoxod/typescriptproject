@@ -9,8 +9,8 @@ const readableFile = "./file-pathchecker-testfile-readable2.txt";
 const unreadableFile = "./file-pathchecker-testfile-readable1.txt";
 const writableFile = "./file-pathchecker-testfile-writable2.txt";
 const unwritableFile = "./file-pathchecker-testfile-writable1.txt";
-const executableFile = "./file-pathchecker-testfile-executable1";
-const unexecutableFile = "./file-pathchecker-testfile-executable2";
+const executableFile = "./file-pathchecker-testfile-executable2";
+const unexecutableFile = "./file-pathchecker-testfile-executable1";
 const dirPath = "./pathchecker-testdir";
 
 describe("dummy test", () => {
@@ -146,6 +146,34 @@ describe("PathChecker module", () => {
     describe("checking writable file", () => {
       test("is file writable", () => {
         pathChecker.writableFile(writableFile, (results) => {
+          const { status } = results;
+          log(status);
+          expect(status).toBeTruthy();
+        });
+      });
+    });
+  });
+});
+
+// pathChecker.executableFile
+describe("PathChecker module", () => {
+  describe("executableFile method", () => {
+    describe("checking unexecutable file", () => {
+      test("is file executable", () => {
+        pathChecker.executableFile(unexecutableFile, (results) => {
+          const { status } = results;
+          expect(status).toBeFalsy();
+        });
+      });
+    });
+  });
+});
+
+describe("PathChecker module", () => {
+  describe("executableFile method", () => {
+    describe("checking executable file", () => {
+      test("is file executable", () => {
+        pathChecker.executableFile(executableFile, (results) => {
           const { status } = results;
           log(status);
           expect(status).toBeTruthy();
