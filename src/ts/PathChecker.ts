@@ -44,9 +44,9 @@ export const readableFile = async (path: string, cb): Promise<void> => {
 export const writableFile = async (path: string, cb): Promise<void> => {
   try {
     const results = await access(path, fsConstants.W_OK);
-    cb({ status: true });
+    return cb({ status: true });
   } catch (err) {
-    cb({ status: false });
+    return cb({ status: false });
   }
 };
 
