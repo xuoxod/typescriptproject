@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha dist/js/tests/PathCheckerTests.js",
-    "jtest":"jest src/tests/TestDummy.ts",
+    "jtest": "jest src/tests/TestDummy.ts",
     "tsc:w": "tsc --pretty -w",
     "tsc:c": "tsc --pretty"
   },

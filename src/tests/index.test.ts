@@ -19,6 +19,7 @@ describe("dummy test", () => {
   });
 });
 
+// pathChecker.isDirectory
 describe("PathChecker module", () => {
   describe("isDirectory method", () => {
     describe("checking a regular file", () => {
@@ -45,6 +46,7 @@ describe("PathChecker module", () => {
   });
 });
 
+// pathChecker.isFile
 describe("PathChecker module", () => {
   describe("isFile method", () => {
     describe("checking a directory path", () => {
@@ -52,6 +54,73 @@ describe("PathChecker module", () => {
         pathChecker.isFile(dirPath, (results) => {
           const { isFile } = results;
           expect(isFile).toBeFalsy();
+        });
+      });
+    });
+  });
+});
+
+describe("PathChecker module", () => {
+  describe("isFile method", () => {
+    describe("checking a file path", () => {
+      test("is path a file", () => {
+        pathChecker.isFile(filePath, (results) => {
+          const { isFile } = results;
+          expect(isFile).toBeTruthy();
+        });
+      });
+    });
+  });
+});
+
+// pathChecker.visibleFile
+describe("PathChecker module", () => {
+  describe("visibleFile method", () => {
+    describe("checking invisible file", () => {
+      test("is file visible", () => {
+        pathChecker.visibleFile(invisibleFile, (results) => {
+          const { status } = results;
+          expect(status).toBeFalsy();
+        });
+      });
+    });
+  });
+});
+
+describe("PathChecker module", () => {
+  describe("visibleFile method", () => {
+    describe("checking visible file", () => {
+      test("is file visible", () => {
+        pathChecker.visibleFile(visibleFile, (results) => {
+          const { status } = results;
+          expect(status).toBeTruthy();
+        });
+      });
+    });
+  });
+});
+
+// pathChecker.readableFile
+describe("PathChecker module", () => {
+  describe("readableFile method", () => {
+    describe("checking unreadable file", () => {
+      test("is file readable", () => {
+        pathChecker.readableFile(unreadableFile, (results) => {
+          const { status } = results;
+          expect(status).toBeFalsy();
+        });
+      });
+    });
+  });
+});
+
+describe("PathChecker module", () => {
+  describe("readableFile method", () => {
+    describe("checking readable file", () => {
+      test("is file readable", () => {
+        pathChecker.readableFile(readableFile, (results) => {
+          const { status } = results;
+          expect(status).toBeTruthy();
         });
       });
     });
